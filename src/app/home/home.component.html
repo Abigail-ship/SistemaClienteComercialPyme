@@ -1,0 +1,66 @@
+<!-- Home Banner con CTA -->
+<div class="home-container">
+  <h1>¡Bienvenido a Raíces con Alas!</h1>
+  <p>Descubre arte hecho con amor por artesanos mexicanos.</p>
+</div>
+
+<!-- Categorías con badge o imagen opcional -->
+<div class="categorias-container" *ngIf="categorias.length > 0">
+  <h2>Categorías</h2>
+  <div class="carousel">
+    <div class="carousel-item" *ngFor="let cat of categorias">
+      <div class="categoria-card">
+        <div class="badge"></div>
+        <h3>{{ cat }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Productos Populares -->
+<div class="productos-carrusel" *ngIf="productosPopulares.length > 0">
+  <h2>Productos Populares</h2>
+  <div class="slider">
+    <div class="slider-item" *ngFor="let p of productosPopulares">
+      <mat-card class="producto-card">
+        <div class="badge-popular">🔥 Popular</div>
+         <img *ngIf="p.imagen" [src]="p.imagen" alt="{{ p.nombre }}" />
+        <mat-card-title>{{ p.nombre }}</mat-card-title>
+        <mat-card-content>
+          <p>{{ p.descripcion }}</p>
+          <p><strong>Precio:</strong> {{ p.precioVenta | currency }}</p>
+          <p *ngIf="p.stock === 0" class="agotado">Agotado</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button [disabled]="p.stock === 0" (click)="verProducto(p.productoId)">
+            {{ p.stock === 0 ? 'Agotado' : 'Ver Detalle' }}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- Productos Recientes -->
+<div class="productos-carrusel" *ngIf="productosRecientes.length > 0">
+  <h2>Recientemente Agregados</h2>
+  <div class="slider">
+    <div class="slider-item" *ngFor="let p of productosRecientes">
+      <mat-card class="producto-card">
+        <div class="badge-new">🆕 Nuevo</div>
+        <img *ngIf="p.imagen" [src]="p.imagen" alt="{{ p.nombre }}" />
+        <mat-card-title>{{ p.nombre }}</mat-card-title>
+        <mat-card-content>
+          <p>{{ p.descripcion }}</p>
+          <p><strong>Precio:</strong> {{ p.precioVenta | currency }}</p>
+          <p *ngIf="p.stock === 0" class="agotado">Agotado</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button [disabled]="p.stock === 0" (click)="verProducto(p.productoId)">
+            {{ p.stock === 0 ? 'Agotado' : 'Ver Detalle' }}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

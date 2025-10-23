@@ -1,0 +1,120 @@
+<mat-toolbar color="primary" class="mat-elevation-z4">
+  <div class="logo-section">
+    <img src="assets/images/logo1.png" alt="Logo" width="50" />
+  </div>
+  <span class="title">Raíces con Alas</span>
+
+  <span class="spacer"></span>
+
+  <a mat-button routerLink="/home">Inicio</a>
+  <a mat-button routerLink="/productos">Productos</a>
+  <a mat-button routerLink="/mis-pedidos">Mis Pedidos</a>
+
+   <!-- Mostrar Mis Pedidos y saludo solo si hay usuario logueado -->
+<ng-container *ngIf="usuarioLogueado; else loginBtn">
+  <div class="user-menu">
+    <span class="saludo">Hola, {{ usuarioLogueado.nombres }}</span>
+    <button mat-button (click)="logout()">Cerrar sesión</button>
+  </div>
+</ng-container>
+
+<!-- Botón login si no hay usuario logueado -->
+<ng-template #loginBtn>
+  <button mat-button (click)="abrirLogin()">Iniciar sesión</button>
+</ng-template>
+
+  <!-- Botón para abrir la búsqueda lateral -->
+  <button mat-icon-button (click)="abrirBusquedaLateral()" aria-label="Abrir búsqueda">
+    <mat-icon>search</mat-icon>
+  </button>
+
+  <!-- Ícono del carrito -->
+  <button mat-icon-button routerLink="/carrito" style="position: relative;" aria-label="Ver carrito">
+    <mat-icon>shopping_cart</mat-icon>
+    <span 
+      *ngIf="totalItemsCarrito > 0" 
+      class="cart-badge"
+      style="
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: red;
+        color: white;
+        font-size: 12px;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+      {{ totalItemsCarrito }}
+    </span>
+  </button>
+
+  <button mat-raised-button color="accent" (click)="openSubscribeDialog()">
+    Suscribirme
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" position="end">
+    <mat-toolbar color="primary">
+      <span>Buscar Productos</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-form-field appearance="outline" class="search-bar" style="margin: 16px; width: calc(100% - 32px);">
+      <mat-label>Buscar</mat-label>
+      <input 
+        matInput 
+        [(ngModel)]="searchTerm" 
+        (input)="filtrarEnTiempoReal()" 
+        placeholder="Buscar..." />
+      <button mat-icon-button matSuffix (click)="filtrarEnTiempoReal()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div style="padding: 0 16px;">
+      <ng-container *ngIf="productosFiltrados.length > 0; else noResultados">
+        <mat-card 
+          *ngFor="let producto of productosFiltrados" 
+          class="producto-card"
+          style="margin-bottom: 10px; cursor: pointer;"
+          (click)="irADetalle(producto.productoId)">
+
+          <!-- Imagen -->
+          <img *ngIf="producto.imagen"
+          [src]="producto.imagen"
+          alt="{{ producto.nombre }}"
+          class="producto-imagen" 
+          style="max-height: 180px; object-fit: cover; border-radius: 8px;" />
+
+          <!-- Nombre y categoría -->
+          <mat-card-title>{{ producto.nombre }}</mat-card-title>
+          <mat-card-subtitle>
+            {{ producto.categoria?.nombre || 'Sin categoría' }}
+          </mat-card-subtitle>
+
+          <!-- Descripción -->
+          <mat-card-content>
+            <p>{{ producto.descripcion }}</p>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+
+      <ng-template #noResultados>
+        <p *ngIf="searchTerm && !cargando">No se encontraron productos.</p>
+        <p *ngIf="cargando">Buscando...</p>
+      </ng-template>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

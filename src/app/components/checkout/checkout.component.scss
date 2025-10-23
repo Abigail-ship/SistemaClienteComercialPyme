@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:host {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff8f0;
+  padding: 16px;
+  display: block;
+}
+
+/* Títulos principales */
+h2 {
+  color: #d62828; /* Rojo vivo */
+  font-weight: 600;
+  border-bottom: 3px solid #fcbf49;
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  color: #5f0f40; /* Morado artesanal */
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+/* Lista de productos */
+div[ngfor] {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  color: #003049;
+}
+
+p {
+  font-weight: 600;
+  color: #003049;
+}
+
+/* Formulario cliente */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+  padding: 16px;
+  background-color: #fefae0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+
+    &:focus {
+      border-color: #f77f00;
+      outline: none;
+      box-shadow: 0 0 5px rgba(247, 127, 0, 0.5);
+    }
+  }
+
+  button {
+    background-color: #f77f00;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background-color: #d66b00;
+    }
+  }
+}
+
+/* Botón continuar compra */
+button[disabled] {
+  background-color: #ccc !important;
+  cursor: not-allowed;
+}
+
+button:not([disabled]) {
+  background-color: #40916c; /* Verde */
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-top: 12px;
+
+  &:hover {
+    background-color: #2d6a4f;
+  }
+}
+
+/* Selector de método de pago */
+select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 8px;
+  font-size: 14px;
+
+  &:focus {
+    border-color: #fcbf49;
+    outline: none;
+    box-shadow: 0 0 5px rgba(252, 191, 73, 0.5);
+  }
+}
+
+/* Caja de tarjeta Stripe */
+div#cardInfo {
+  margin-top: 12px;
+  background-color: #ffffff;
+  border: 2px solid #fcbf49;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* Mensaje de error */
+p[style*="color: red"] {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* Mensaje de pago completado */
+div[ngif*="pagoCompletado"] {
+  background-color: #d8f3dc;
+  color: #1b4332;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 20px;
+  border: 1px solid #95d5b2;
+}
+
+.btn-continuar {
+  background-color: #f77f00; /* naranja artesanal */
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(247, 127, 0, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    background-color: #d96900;
+    box-shadow: 0 6px 12px rgba(217, 105, 0, 0.6);
+  }
+}
+
+.btn-continuar {
+  background-color: #f77f00; /* naranja artesanal */
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(247, 127, 0, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background-color: #d96900;
+    box-shadow: 0 6px 12px rgba(217, 105, 0, 0.6);
+  }
+
+  &:disabled {
+    background-color: #4f3708;
+    color: #716348;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}

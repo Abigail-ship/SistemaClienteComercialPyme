@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:host {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff8f0;
+  padding: 16px;
+  display: block;
+}
+
+/* Encabezado del formulario */
+h2 {
+  color: #d62828;
+  font-weight: 600;
+  border-bottom: 3px solid #fcbf49;
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+}
+
+/* Contenedor del formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #fefae0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Campos de entrada */
+input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+
+  &:focus {
+    border-color: #f77f00;
+    outline: none;
+    box-shadow: 0 0 5px rgba(247, 127, 0, 0.4);
+  }
+}
+
+/* Botón de registro */
+button {
+  background-color: #40916c;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background-color: #2d6a4f;
+  }
+}
+
+/* Mensaje de registro exitoso */
+p[ngif] {
+  margin-top: 12px;
+  background-color: #d8f3dc;
+  padding: 10px;
+  border-radius: 6px;
+  color: #1b4332;
+  font-weight: 600;
+  text-align: center;
+}

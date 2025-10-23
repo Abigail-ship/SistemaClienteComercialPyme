@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:host {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff8f0;
+  padding: 16px;
+  display: block;
+}
+
+/* Título principal */
+h2 {
+  color: #d62828; /* Rojo artesanía */
+  font-weight: 600;
+  border-bottom: 3px solid #fcbf49;
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+}
+
+/* Tabla del carrito */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  th {
+    background-color: #fcbf49; /* Amarillo brillante */
+    color: #5f0f40;
+    padding: 8px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+  }
+
+  tr:hover {
+    background-color: #fff3e0;
+  }
+}
+
+/* Botones con temática */
+button[mat-stroked-button] {
+  border-color: #f77f00;
+  color: #f77f00;
+
+  &:hover {
+    background-color: #fff3e0;
+  }
+}
+
+button[mat-flat-button],
+button:not([mat-stroked-button]):not([mat-icon-button]) {
+  background-color: #f77f00; /* Naranja */
+  color: white;
+
+  &:hover {
+    background-color: #d66b00;
+  }
+}
+
+button[color="accent"] {
+  background-color: #40916c; /* Verde */
+  color: white;
+
+  &:hover {
+    background-color: #2d6a4f;
+  }
+}
+
+/* Iconos */
+.mat-icon {
+  color: #5f0f40; /* Morado artesanía */
+}
+
+/* Total y área inferior */
+h3 {
+  color: #003049;
+  font-weight: 600;
+}
+
+div[style*="display:flex"] {
+  background-color: #fefae0;
+  padding: 12px;
+  border-radius: 8px;
+}

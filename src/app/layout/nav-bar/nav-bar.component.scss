@@ -1,0 +1,140 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* Barra principal */
+mat-toolbar {
+  background-color: #d62828; /* Rojo artesanal */
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  .logo-section {
+    display: flex;
+    align-items: center;
+
+    img {
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-left: 10px;
+    letter-spacing: 1px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  a[mat-button] {
+    color: white;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+  }
+
+  button[mat-icon-button],
+  button[mat-raised-button] {
+    margin-left: 8px;
+  }
+
+  button[mat-raised-button] {
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+
+    &:hover {
+      background-color: #f77f00; /* Naranja artesanal */
+    }
+  }
+
+  .cart-badge {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 18px;
+    background: #003049; /* Azul profundo artesanal */
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .user-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .saludo {
+    font-weight: 500;
+    background-color: rgba(255,255,255,0.15);
+    padding: 4px 8px;
+    border-radius: 12px;
+    white-space: normal; /* Permite mostrar nombre completo en varias líneas si es necesario */
+    max-width: none;     /* Ocupa todo el espacio necesario */
+  }
+
+  a[mat-button] {
+    color: white;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+  }
+}
+}
+
+/* Contenedor del sidenav */
+.sidenav-container {
+  height: calc(100vh - 64px); /* Ajusta por altura de la toolbar */
+}
+
+/* Sidenav */
+mat-sidenav {
+  width: 320px;
+  background-color: #fff8f0; /* Fondo suave artesanal */
+  border-left: 3px solid #fcbf49;
+}
+
+mat-toolbar {
+  &.mat-primary {
+    background-color: #d62828; /* Rojo artesanal */
+    color: white;
+  }
+  
+}
+
+.search-bar {
+  mat-label {
+    font-weight: 500;
+    color: #003049;
+  }
+  input {
+    font-size: 1rem;
+  }
+}
+
+mat-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+}

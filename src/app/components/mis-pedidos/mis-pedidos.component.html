@@ -1,0 +1,41 @@
+<div class="container">
+  <h2>Mis Pedidos</h2>
+
+  <div *ngIf="cargando" class="loading">Cargando pedidos...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="pedidos-grid" *ngIf="!cargando && pedidos.length > 0">
+    <mat-card *ngFor="let pedido of pedidos" class="pedido-card">
+      <mat-card-header>
+        <mat-card-title>Pedido #{{ pedido.ventaId }}</mat-card-title>
+        <mat-card-subtitle>{{ pedido.fecha | date:'short' }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p><strong>Total:</strong> {{ pedido.total | currency }}</p>
+        <p><strong>Pagado:</strong> {{ pedido.pagado ? 'Sí' : 'No' }}</p>
+
+        <div *ngIf="pedido.detalleventa && pedido.detalleventa.length > 0">
+          <h4>Productos:</h4>
+
+          <div class="productos-pedido" *ngFor="let item of pedido.detalleventa">
+  <img
+    *ngIf="item.producto?.imagen"
+    [src]="item.producto.imagen"
+    alt="{{ item.producto?.nombre }}"
+    class="producto-img"
+  />
+  <div class="producto-info">
+    <p><strong>{{ item.Producto?.nombre }}</strong></p>
+    <p>Cantidad: {{ item.cantidad }}</p>
+    <p>Subtotal: {{ item.subtotal | currency }}</p>
+  </div>
+</div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <p *ngIf="!cargando && pedidos.length === 0">No tienes pedidos aún.</p>
+</div>

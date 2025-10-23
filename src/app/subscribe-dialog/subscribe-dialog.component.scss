@@ -1,0 +1,61 @@
+:host {
+  display: block;
+  padding: 16px;
+  background-color: #fff8f0; /* Fondo suave artesanal */
+  color: #003049; /* Azul profundo */
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+/* Título del diálogo */
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d62828; /* Rojo artesanal */
+  margin-bottom: 8px;
+}
+
+/* Texto descriptivo */
+p {
+  font-size: 1rem;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+/* Campo de entrada */
+mat-form-field {
+  width: 100%;
+
+  mat-label {
+    font-weight: 500;
+    color: #003049;
+  }
+
+  input {
+    font-size: 1rem;
+  }
+}
+
+/* Botones */
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+
+  button[mat-button] {
+    color: #003049;
+    font-weight: 500;
+  }
+
+  button[mat-raised-button] {
+    background-color: #d62828;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #f77f00; /* Naranja artesanal */
+    }
+  }
+}

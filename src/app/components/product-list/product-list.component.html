@@ -1,0 +1,14 @@
+<div class="product-grid">
+  <div class="product-card" *ngFor="let producto of productos">
+    <h3>{{ producto.nombre }}</h3>
+           <!-- Imagen del producto -->
+  <img *ngIf="producto.imagen"
+     [src]="producto.imagen"
+     alt="{{ producto.nombre }}"
+     class="producto-imagen" />
+
+    <p>{{ producto.descripcion }}</p>
+    <strong>${{ producto.precioVenta | number }}</strong>
+    <button (click)="verDetalle(producto.productoId)">+</button>
+  </div>
+</div>

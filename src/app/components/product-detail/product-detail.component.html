@@ -1,0 +1,40 @@
+<div *ngIf="cargando">Cargando producto...</div>
+
+<div *ngIf="!cargando && producto">
+  <h2>{{ producto.nombre }}</h2>
+         <!-- Imagen del producto -->
+  <img *ngIf="producto.imagen"
+     [src]="producto.imagen"
+     alt="{{ producto.nombre }}"
+     class="producto-imagen" />
+
+  <p>{{ producto.descripcion }}</p>
+
+  <p><strong>Precio: </strong> {{ producto.precioVenta | currency }}</p>
+  <p><strong>Categoría: </strong> {{ producto.categoria?.nombre }}</p>
+  <p><strong>Código: </strong> {{ producto.codigo }}</p>
+  <p><strong>Stock: </strong> {{ producto.stock }}</p>
+  <p><strong>Fecha de creación: </strong> {{ producto.fechaCreacion | date:'short' }}</p>
+
+  <div class="cantidad-control" style="display:flex; align-items:center; gap:8px; margin:12px 0;">
+    <button mat-icon-button (click)="decreaseCantidad()">
+  <mat-icon>remove</mat-icon>
+</button>
+
+<span>{{ cantidad }}</span>
+
+<button mat-icon-button (click)="increaseCantidad()">
+  <mat-icon>add</mat-icon>
+</button>
+
+  </div>
+
+  <button mat-raised-button color="primary" (click)="addToCart()" [disabled]="cantidad < 1 || cantidad > producto.stock">
+    Añadir al carrito
+  </button>
+</div>
+
+<div *ngIf="!cargando && error">
+  <p>{{ error }}</p>
+</div>
+

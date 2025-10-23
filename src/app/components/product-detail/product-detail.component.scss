@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:host {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff8f0;
+  padding: 16px;
+  display: block;
+}
+
+/* Texto de carga */
+div[ngif*="cargando"] {
+  font-weight: 600;
+  color: #f77f00;
+}
+
+/* Título del producto */
+h2 {
+  color: #d62828; /* Rojo artesanal */
+  font-weight: 600;
+  border-bottom: 3px solid #fcbf49; /* Amarillo vibrante */
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+}
+
+/* Descripción */
+p {
+  font-size: 14px;
+  color: #003049;
+  margin: 6px 0;
+
+  strong {
+    color: #5f0f40; /* Morado artesanal */
+  }
+}
+
+/* Control de cantidad */
+.cantidad-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+
+  span {
+    font-weight: 600;
+    color: #003049;
+    min-width: 24px;
+    text-align: center;
+  }
+
+  button[mat-icon-button] {
+    background-color: #fcbf49;
+    color: #5f0f40;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: #f77f00;
+      color: #fff;
+    }
+  }
+}
+
+/* Botón añadir al carrito */
+button[mat-raised-button] {
+  background-color: #40916c; /* Verde artesanal */
+  color: white;
+  font-weight: 600;
+  padding: 8px 16px;
+
+  &:hover {
+    background-color: #2d6a4f;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+/* Mensaje de error */
+div[ngif*="error"] p {
+  background-color: #ffcccc;
+  padding: 8px;
+  border-radius: 6px;
+  color: #8b0000;
+  font-weight: 600;
+}

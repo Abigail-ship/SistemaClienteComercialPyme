@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:host {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff8f0;
+  padding: 16px;
+  display: block;
+}
+
+/* Grid de productos */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* Tarjeta de producto */
+.product-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 2px solid #fcbf49; /* Amarillo vibrante */
+  padding: 16px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+  }
+
+  h3 {
+    color: #d62828; /* Rojo artesanal */
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #003049;
+    font-size: 14px;
+    min-height: 40px;
+  }
+
+  strong {
+    display: block;
+    margin: 8px 0;
+    font-size: 16px;
+    color: #5f0f40; /* Morado artesanal */
+  }
+
+  button {
+    background-color: #40916c; /* Verde artesanal */
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background-color: #2d6a4f;
+    }
+  }
+}

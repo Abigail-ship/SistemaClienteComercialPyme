@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:host {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff8f0; /* Fondo cálido artesanal */
+  color: #003049; /* Azul profundo */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Reset box-sizing para todos los elementos */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Enlaces con color artesanal */
+a {
+  color: #d62828;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #f77f00; /* Naranja artesanal */
+    text-decoration: underline;
+  }
+}
+
+/* Botones base */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Scrollbar personalizado (opcional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fde2b8;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fcbf49;
+  border-radius: 20px;
+  border: 2px solid #fde2b8;
+}

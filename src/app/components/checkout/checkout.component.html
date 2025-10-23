@@ -1,0 +1,48 @@
+<h2>Checkout - Confirmar compra</h2>
+
+<h3>Carrito</h3>
+<div *ngFor="let item of carrito">
+  {{ item.producto.nombre }} - ${{ item.producto.precioVenta }} x {{ item.cantidad }} = ${{ item.producto.precioVenta * item.cantidad }}
+</div>
+<p>Total: ${{ total }}</p>
+
+<div *ngIf="!clienteRegistrado">
+  <h3>Datos para su registro:</h3>
+  <form (ngSubmit)="registrarCliente()">
+    <input placeholder="Nombres" [(ngModel)]="cliente.nombres" name="nombres" required />
+    <input placeholder="Apellidos" [(ngModel)]="cliente.apellidos" name="apellidos" required />
+    <input placeholder="Dirección" [(ngModel)]="cliente.direccion" name="direccion" />
+    <input placeholder="Teléfono" [(ngModel)]="cliente.telefono" name="telefono" />
+    <input placeholder="Email" [(ngModel)]="cliente.email" name="email" type="email" />
+    <button type="submit">Registrarme</button>
+  </form>
+</div>
+
+<button mat-raised-button color="primary" (click)="continuarCompra()" 
+        [disabled]="!clienteRegistrado" class="btn-continuar">
+  Continuar con la compra
+</button>
+
+
+<!-- Selección de método de pago -->
+<div *ngIf="mostrandoFormularioPago && !pagoCompletado">
+  <label for="metodoPago">Método de pago</label>
+  <select id="metodoPago" [(ngModel)]="metodoPagoId" name="metodoPagoId" (ngModelChange)="onMetodoPagoChange($event)" required>
+    <option *ngFor="let metodo of metodosPagoFiltrados" [ngValue]="metodo.metodoPagoId">
+      {{ metodo.nombre }}
+    </option>
+  </select>
+</div>
+
+<!-- Formulario de pago Stripe para cualquier tarjeta -->
+<div *ngIf="mostrandoFormularioPago && !pagoCompletado && esMetodoTarjeta(metodoPagoId)">
+  <h3>Procesar Pago</h3>
+  <div #cardInfo style="border: 1px solid #ccc; padding: 10px; border-radius: 4px;"></div>
+  <button (click)="procesarPago()">Pagar ${{ total }}</button>
+  <p style="color: red" *ngIf="error">{{ error }}</p>
+</div>
+
+<div *ngIf="pagoCompletado">
+  <h3>Pago completado con éxito.</h3>
+</div>
+

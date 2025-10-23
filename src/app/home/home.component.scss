@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:host {
+  font-family: 'Poppins', sans-serif;
+  display: block;
+  background: linear-gradient(135deg, #fff8f0 0%, #fde2b8 100%);
+  min-height: calc(100vh - 64px);
+  padding: 20px;
+}
+
+/* Contenedor de bienvenida */
+.home-container {
+  margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  border: 4px solid #fcbf49;
+  border-radius: 16px;
+  padding: 40px 20px;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  animation: fadeIn 0.6s ease-in-out;
+
+  h1 {
+    font-size: 2.2rem;
+    color: #d62828;
+    margin-bottom: 16px;
+    text-shadow: 1px 1px #fcbf49;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #003049;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* Categorías */
+.categorias-container {
+  width: 100%;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, #fde2b8 0%, #fff8f0 100%);
+  box-sizing: border-box;
+
+  h2 {
+    text-align: center;
+    color: #d62828;
+    margin-bottom: 20px;
+  }
+}
+
+.carousel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding-bottom: 10px;
+}
+
+.carousel-item {
+  flex: 0 1 140px;
+  display: flex;
+  justify-content: center;
+}
+
+.categoria-card {
+  background-color: #fcbf49;
+  color: #003049;
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 140px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* Productos Slider */
+.productos-carrusel {
+  margin-top: 40px;
+
+  h2 {
+    text-align: center;
+    color: #d62828;
+    margin-bottom: 20px;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: wrap; /* permite que items bajen de fila en pantallas pequeñas */
+    justify-content: center;
+    gap: 16px;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #fcbf49;
+      border-radius: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }
+
+  .slider-item {
+    flex: 0 1 220px; /* ancho base */
+    display: flex;
+    justify-content: center;
+  }
+
+  .producto-card {
+    width: 100%;
+    border: 2px solid #fcbf49;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    /* Badges */
+    .badge-popular,
+    .badge-new {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 2px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 12px;
+      color: white;
+    }
+
+    .badge-popular { background-color: #d62828; }
+    .badge-new { background-color: #40916c; }
+
+    img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    mat-card-title {
+      font-weight: 600;
+      color: #5f0f40;
+      margin: 8px 0;
+    }
+
+    mat-card-content p {
+      font-size: 14px;
+      color: #003049;
+      margin: 4px 0;
+      strong { color: #40916c; }
+    }
+
+    .agotado {
+      color: #d62828;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    mat-card-actions {
+      display: flex;
+      justify-content: center;
+      padding: 8px;
+
+      button { width: 100%; font-weight: 500; }
+    }
+  }
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 1024px) {
+  .slider-item { flex: 0 1 180px; }
+}
+
+@media (max-width: 768px) {
+  .slider-item { flex: 0 1 150px; }
+}
+
+@media (max-width: 480px) {
+  .slider-item { flex: 0 1 120px; }
+  .producto-card img { height: 140px; }
+}
